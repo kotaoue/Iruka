@@ -1,5 +1,9 @@
-# Python
-__pycache__/
-*.py[cod]
-*.pyo
-*.pyd
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+dist/
+Iruka

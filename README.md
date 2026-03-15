@@ -13,18 +13,27 @@ It's a little bothering.
 ### Requirements
 
 - macOS
-- Python 3 (pre-installed on macOS)
+- Go 1.24+
+- Xcode Command Line Tools (`xcode-select --install`)
 
 ### Run the Desktop Mascot
 
 ```bash
-python3 mascot.py
+go run .
 ```
 
-🐓 will appear on your desktop and stay on top of other windows.
+Or build a standalone binary:
 
-- **Drag** the mascot to move it around the screen.
-- **Right-click** or press **Escape** to quit.
+```bash
+go build -o Iruka .
+./Iruka
+```
+
+🐓 will appear on your desktop.
+
+- **Drag** the window by its title bar to move it around the screen.
+- **Escape** to quit.
+- **Close button** hides the mascot to the system tray (right-click tray icon → Quit to exit).
 
 ## License
 Distributed under the MIT License. See [LICENSE](./LICENSE) for more information.
