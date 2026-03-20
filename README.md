@@ -1,7 +1,9 @@
 # Iruka
+
 Iruka makes you smile.
 
 ## About The Iruka
+
 When you're coding, you're expressionless or frowning, right?  
 Are you surprised when you see yourself on the screen of a web conference?  
 
@@ -36,5 +38,5 @@ go build -o Iruka .
 - **Close button** hides the mascot to the system tray (right-click tray icon → Quit to exit).
 
 ## License
-Distributed under the MIT License. See [LICENSE](./LICENSE) for more information.
 
+Distributed under the MIT License. See [LICENSE](./LICENSE) for more information.
