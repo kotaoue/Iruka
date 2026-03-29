@@ -6,4 +6,12 @@
 *.dylib
 *.test
 dist/
-Iruka
+/Iruka
+
+# Swift
+.build/
+*.xcodeproj/
+*.xcworkspace/
+DerivedData/
+*.o
+*.d
