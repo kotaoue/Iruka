@@ -8,7 +8,7 @@ private let fontSize: CGFloat = 48
 class MascotLabel: NSTextField {
     override func rightMouseDown(with event: NSEvent) {
         let menu = NSMenu()
-        menu.addItem(NSMenuItem(title: "終了", action: #selector(NSApplication.terminate(_:)), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: ""))
         NSMenu.popUpContextMenu(menu, with: event, for: self)
     }
 }
