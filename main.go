@@ -20,7 +20,13 @@ const (
 
 func main() {
 	a := app.New()
-	w := a.NewWindow("Iruka")
+
+	var w fyne.Window
+	if drv, ok := a.Driver().(desktop.Driver); ok {
+		w = drv.CreateSplashWindow()
+	} else {
+		w = a.NewWindow("Iruka")
+	}
 
 	text := canvas.NewText(mascotChar, color.Black)
 	text.TextSize = fontSize
