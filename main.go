@@ -53,7 +53,13 @@ func (m *mascotWidget) MouseUp(_ *desktop.MouseEvent) {}
 
 func main() {
 	a := app.New()
-	w := a.NewWindow("Iruka")
+
+	var w fyne.Window
+	if drv, ok := a.Driver().(desktop.Driver); ok {
+		w = drv.CreateSplashWindow()
+	} else {
+		w = a.NewWindow("Iruka")
+	}
 
 	mascot := newMascotWidget(a, w)
 	w.SetContent(container.NewCenter(mascot))
@@ -77,5 +83,7 @@ func main() {
 		}
 	})
 
-	w.ShowAndRun()
+	w.Show()
+	makeWindowDraggable(w)
+	a.Run()
 }
