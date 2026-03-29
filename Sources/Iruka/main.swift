@@ -5,6 +5,14 @@ private let windowWidth: CGFloat = 100
 private let windowHeight: CGFloat = 100
 private let fontSize: CGFloat = 48
 
+class MascotLabel: NSTextField {
+    override func rightMouseDown(with event: NSEvent) {
+        let menu = NSMenu()
+        menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: ""))
+        NSMenu.popUpContextMenu(menu, with: event, for: self)
+    }
+}
+
 class AppDelegate: NSObject, NSApplicationDelegate {
     var window: NSWindow!
 
@@ -21,7 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.isMovableByWindowBackground = true
         window.center()
 
-        let label = NSTextField(labelWithString: mascotChar)
+        let label = MascotLabel(labelWithString: mascotChar)
         label.font = NSFont.systemFont(ofSize: fontSize)
         label.alignment = .center
         label.frame = NSRect(x: 0, y: 0, width: windowWidth, height: windowHeight)
