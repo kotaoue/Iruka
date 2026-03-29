@@ -32,6 +32,7 @@ func (t *transparentTheme) Color(name fyne.ThemeColorName, variant fyne.ThemeVar
 func main() {
 	a := app.New()
 	a.Settings().SetTheme(&transparentTheme{Theme: theme.DefaultTheme()})
+	a.Lifecycle().SetOnEnteredForeground(makeWindowTransparent)
 
 	var w fyne.Window
 	if drv, ok := a.Driver().(desktop.Driver); ok {
