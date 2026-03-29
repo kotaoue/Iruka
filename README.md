@@ -33,6 +33,7 @@ swift build -c release
 🐓 will appear on your desktop.
 
 - **Drag** the window anywhere to move it around the screen.
+- **Right-click** the mascot to open a menu and quit.
 - **Escape** to quit.
 
 ### Run with Go (legacy)
