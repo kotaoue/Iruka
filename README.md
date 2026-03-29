@@ -34,6 +34,7 @@ go build -o Iruka .
 🐓 will appear on your desktop.
 
 - **Drag** the window by its title bar to move it around the screen.
+- **Right-click** the mascot to open a menu and quit.
 - **Escape** to quit.
 - **Close button** hides the mascot to the system tray (right-click tray icon → Quit to exit).
 

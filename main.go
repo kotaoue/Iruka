@@ -9,6 +9,7 @@ import (
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/driver/desktop"
 	"fyne.io/fyne/v2/theme"
+	"fyne.io/fyne/v2/widget"
 )
 
 const (
@@ -18,21 +19,44 @@ const (
 	fontSize     = 48.0
 )
 
+type mascotWidget struct {
+	widget.BaseWidget
+	text *canvas.Text
+	app  fyne.App
+	win  fyne.Window
+}
+
+func newMascotWidget(a fyne.App, w fyne.Window) *mascotWidget {
+	m := &mascotWidget{app: a, win: w}
+	m.text = canvas.NewText(mascotChar, color.Black)
+	m.text.TextSize = fontSize
+	m.text.Alignment = fyne.TextAlignCenter
+	m.ExtendBaseWidget(m)
+	return m
+}
+
+func (m *mascotWidget) CreateRenderer() fyne.WidgetRenderer {
+	return widget.NewSimpleRenderer(m.text)
+}
+
+func (m *mascotWidget) MouseDown(ev *desktop.MouseEvent) {
+	if ev.Button == desktop.MouseButtonSecondary {
+		menu := fyne.NewMenu("Iruka",
+			fyne.NewMenuItem("Quit", m.app.Quit),
+		)
+		widget.ShowPopUpMenuAtPosition(menu, m.win.Canvas(), ev.AbsolutePosition)
+	}
+}
+
+// MouseUp is required to satisfy the desktop.Mouseable interface.
+func (m *mascotWidget) MouseUp(_ *desktop.MouseEvent) {}
+
 func main() {
 	a := app.New()
+	w := a.NewWindow("Iruka")
 
-	var w fyne.Window
-	if drv, ok := a.Driver().(desktop.Driver); ok {
-		w = drv.CreateSplashWindow()
-	} else {
-		w = a.NewWindow("Iruka")
-	}
-
-	text := canvas.NewText(mascotChar, color.Black)
-	text.TextSize = fontSize
-	text.Alignment = fyne.TextAlignCenter
-
-	w.SetContent(container.NewCenter(text))
+	mascot := newMascotWidget(a, w)
+	w.SetContent(container.NewCenter(mascot))
 	w.Resize(fyne.NewSize(windowWidth, windowHeight))
 	w.SetFixedSize(true)
 
