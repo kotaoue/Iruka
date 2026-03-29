@@ -18,8 +18,20 @@ const (
 	fontSize     = 48.0
 )
 
+type transparentTheme struct {
+	fyne.Theme
+}
+
+func (t *transparentTheme) Color(name fyne.ThemeColorName, variant fyne.ThemeVariant) color.Color {
+	if name == theme.ColorNameBackground {
+		return color.Transparent
+	}
+	return t.Theme.Color(name, variant)
+}
+
 func main() {
 	a := app.New()
+	a.Settings().SetTheme(&transparentTheme{Theme: theme.DefaultTheme()})
 
 	var w fyne.Window
 	if drv, ok := a.Driver().(desktop.Driver); ok {
