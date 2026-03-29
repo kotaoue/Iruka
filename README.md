@@ -14,28 +14,34 @@ It's a little bothering.
 
 ### Requirements
 
-- macOS
-- Go 1.24+
-- Xcode Command Line Tools (`xcode-select --install`)
+- macOS 13 (Ventura) or later
+- Xcode 15 or later (includes Swift 5.9+ and SwiftPM)
 
-### Run the Desktop Mascot
+### Run the Desktop Mascot (Swift)
 
 ```bash
-go run .
+swift run
 ```
 
 Or build a standalone binary:
 
 ```bash
-go build -o Iruka .
-./Iruka
+swift build -c release
+.build/release/Iruka
 ```
 
 🐓 will appear on your desktop.
 
-- **Drag** the window by its title bar to move it around the screen.
+- **Drag** the window anywhere to move it around the screen.
 - **Escape** to quit.
-- **Close button** hides the mascot to the system tray (right-click tray icon → Quit to exit).
+
+### Run with Go (legacy)
+
+> Requires Go 1.24+ and Xcode Command Line Tools (`xcode-select --install`).
+
+```bash
+go run .
+```
 
 ## License
 
