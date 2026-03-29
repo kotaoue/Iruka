@@ -36,14 +36,6 @@ swift build -c release
 - **Right-click** the mascot to open a menu and quit.
 - **Escape** to quit.
 
-### Run with Go (legacy)
-
-> Requires Go 1.24+ and Xcode Command Line Tools (`xcode-select --install`).
-
-```bash
-go run .
-```
-
 ## License
 
 Distributed under the MIT License. See [LICENSE](./LICENSE) for more information.
