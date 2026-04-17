@@ -1,7 +1,7 @@
 import AppKit
 
-final class MascotLabel: NSTextField {
-    override func rightMouseDown(with event: NSEvent) {
+public final class MascotLabel: NSTextField {
+    public override func rightMouseDown(with event: NSEvent) {
         let menu = NSMenu()
         menu.addItem(
             NSMenuItem(
