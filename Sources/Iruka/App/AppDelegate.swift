@@ -1,4 +1,5 @@
 import AppKit
+import IrukaCore
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private enum WindowStyle {
