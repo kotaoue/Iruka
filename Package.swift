@@ -15,9 +15,9 @@ let package = Package(
             path: "Sources/Iruka"
         ),
         .testTarget(
-            name: "IrukaTests",
+            name: "IrukaCoreTests",
             dependencies: ["IrukaCore"],
-            path: "Tests/IrukaTests"
+            path: "Tests/IrukaCoreTests"
         ),
     ]
 )
