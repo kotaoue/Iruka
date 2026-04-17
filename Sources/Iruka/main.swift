@@ -30,7 +30,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.level = .floating
         window.isMovableByWindowBackground = true
         if let screenFrame = NSScreen.main?.frame {
-            window.setFrameTopLeftPoint(NSPoint(x: screenFrame.minX, y: screenFrame.maxY))
+            let windowFrame = window.frame
+            window.setFrameOrigin(
+                NSPoint(
+                    x: screenFrame.maxX - windowFrame.width,
+                    y: screenFrame.minY
+                )
+            )
         }
 
         let label = MascotLabel(labelWithString: mascotChar)
