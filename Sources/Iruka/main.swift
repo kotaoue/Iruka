@@ -8,7 +8,9 @@ private let fontSize: CGFloat = 48
 class MascotLabel: NSTextField {
     override func rightMouseDown(with event: NSEvent) {
         let menu = NSMenu()
-        menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: ""))
+        menu.addItem(
+            NSMenuItem(
+                title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: ""))
         NSMenu.popUpContextMenu(menu, with: event, for: self)
     }
 }
@@ -27,7 +29,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.backgroundColor = .clear
         window.level = .floating
         window.isMovableByWindowBackground = true
-        window.center()
+        if let visibleFrame = NSScreen.main?.visibleFrame {
+            window.setFrameTopLeftPoint(NSPoint(x: visibleFrame.minX, y: visibleFrame.maxY))
+        }
 
         let label = MascotLabel(labelWithString: mascotChar)
         label.font = NSFont.systemFont(ofSize: fontSize)
@@ -39,7 +43,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.makeKeyAndOrderFront(nil)
 
         NSEvent.addLocalMonitorForEvents(matching: .keyDown) { event in
-            if event.keyCode == 53 { // Escape
+            if event.keyCode == 53 {  // Escape
                 NSApplication.shared.terminate(nil)
             }
             return event
