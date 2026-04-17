@@ -1,0 +1,18 @@
+# .github/dependabot.yml
+version: 2
+updates:
+  # Automatically update GitHub Actions
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    assignees:
+      - kotaoue
+
+  # Automatically update Swift Package Manager dependencies
+  - package-ecosystem: swift
+    directory: /
+    schedule:
+      interval: weekly
+    assignees:
+      - kotaoue
